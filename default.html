@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width">
+<link href="css/style.css" rel="stylesheet" type="text/css"/> 
+<link rel="stylesheet" href="css/layout.css" type="text/css" />
+<script src= "js/jquery.min.js"></script>
+<script src="js/jquery.bxslider.min.js"></script>
+<link href="css/jquery.bxslider.css" rel="stylesheet" />
+	<script>
+		$(document).ready(function(){
+			  $('.bxslider').bxSlider();
+		});
+	</script>
+ <!-- start equalizer -->		  
+<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/jquery-ui.min.js"></script>
+<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
+<script>
+$(function() {
+	 
+	    $( "#eq > span" ).each(function() {	   
+	      var value = parseInt( $( this ).text(), 10 );
+	      $( this ).empty().slider({
+	        value: value,
+	        range: "min",
+	        animate: true,
+	        orientation: "vertical"
+	      });
+	    });
+	  });
+</script>
+<script>
+(function($){
+	$.fn.percentPie = function(options){
+
+		var settings = $.extend({
+			width: 100,
+			trackColor: "EEEEEE",
+			barColor: "777777",
+			barWeight: 30,
+			startPercent: 0,
+			endPercent: 1,
+			fps: 60
+		}, options);
+
+		this.css({
+			width: settings.width,
+			height: settings.width
+		});
+
+		var	that = this,
+			hoverPolice = false,
+			canvasWidth = settings.width,
+			canvasHeight = canvasWidth,
+			id = $('canvas').length,
+			canvasElement = $('<canvas id="'+ id +'" width="' + canvasWidth + '" height="' + canvasHeight + '"></canvas>'),
+			canvas = canvasElement.get(0).getContext("2d"),
+			centerX = canvasWidth/2,
+			centerY = canvasHeight/2,
+			radius = settings.width/2 - settings.barWeight/2;
+			counterClockwise = false,
+			fps = 1000 / settings.fps,
+			update = .01;
+			this.angle = settings.startPercent;
+
+		this.drawArc = function(startAngle, percentFilled, color){
+			var drawingArc = true;
+			canvas.beginPath();
+			canvas.arc(centerX, centerY, radius, (Math.PI/180)*(startAngle * 360 - 90), (Math.PI/180)*(percentFilled * 360 - 90), counterClockwise);
+			canvas.strokeStyle = color;
+			canvas.lineWidth = settings.barWeight;
+			canvas.stroke();
+			drawingArc = false;
+		}
+
+		this.fillChart = function(stop){
+			var loop = setInterval(function(){
+				hoverPolice = true;
+				canvas.clearRect(0, 0, canvasWidth, canvasHeight);
+
+				that.drawArc(0, 360, settings.trackColor);
+				that.angle += update;
+				that.drawArc(settings.startPercent, that.angle, settings.barColor);
+
+				if(that.angle > stop){
+					clearInterval(loop);
+					hoverPolice = false;
+				}
+			}, fps);
+		}
+
+		this.mouseover(function(){
+			if(hoverPolice == false){
+				that.angle = settings.startPercent;
+				that.fillChart(settings.endPercent);
+			}
+		});
+
+		this.fillChart(settings.endPercent);
+		this.append(canvasElement);
+		return this;
+	}
+}(jQuery));
+
+$(document).ready(function() {
+
+	$('.google').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "71CF97",
+		barWeight: 20,
+		endPercent: .9,
+		fps: 60
+	});
+  
+  $('.moz').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "2EB0E2",
+		barWeight: 20,
+		endPercent: .75,
+		fps: 60
+	});
+  
+  $('.safari').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "#e51937",
+		barWeight: 20,
+		endPercent: .5,
+		fps: 60
+	});
+    
+});
+</script>
+ <!-- start price_bar  -->	
+<link href="css/jquery.nouislider.css" rel="stylesheet">
+<script src="js/jquery.nouislider.js"></script>
+
+
+<object width="0" height="0" type="audio/mpeg" data="music.mp3">
+<param name="src" value="music.mp3"/>
+<param name="autoplay" value="true"/>
+<param name="autostart" value="1"/>
+<embed src="music.mp3" width="0" height="0">
+</object>
+
+
+<title>Atif Aslam</title>
+
+</head>
+<body>
+
+
+<div class="wrap">
+    <br>
+	<h1>Atif Aslam</h1>
+<div class="main">
+	<!-- start menu -->
+
+	<ul class="menu">
+		<li class="active"><a href="#">Biography</a></li>
+		<li><a href="gallery.html">Gallery</a></li>
+		<li><a href="contact.html">Contact Us</a></li>
+	</ul>
+	<div class="clear"></div>
+		<div class="top-nav">
+		<nav class="clearfix">
+				<ul>
+		<li><a href="#">Biography</a></li>
+		<li><a href="gallery.html">Gallery</a></li>
+		<li><a href="contact.html">Contact Us</a></li>
+				</ul>
+				<a href="#" id="pull">Menu</a>
+			</nav>
+			<script>
+				$(function() {
+					var pull 		= $('#pull');
+						menu 		= $('nav ul');
+						menuHeight	= menu.height();
+		
+					$(pull).on('click', function(e) {
+						e.preventDefault();
+						menu.slideToggle();
+					});
+		
+					$(window).resize(function(){
+		        		var w = $(window).width();
+		        		if(w > 320 && menu.is(':hidden')) {
+		        			menu.removeAttr('style');
+		        		}
+		    		});
+				});
+		</script>
+		<!--nav-->
+	</div>
+	</div>
+	
+	<div class="my">
+    
+	<h1 class="alb-head">Basic Information</h1>
+
+	<table id="intro-table-small" align="center">
+    <colgroup>
+        <col class="vzebra-even" />
+        <col class="vzebra-even" />
+        <col class="vzebra-even" />
+        <col class="vzebra-even" />
+    </colgroup>
+    <tbody>
+    	<tr>
+        	<td>Birth Name</td>
+            <td>Atif Aslam.</td>
+        </tr>
+        <tr>
+        	<td>Also known as</td>
+            <td>Aadeez.</td>
+        </tr>
+        <tr>
+        	<td>Born at</td>
+            <td>Wazirabad, Punjab, Pakistan.</td>
+        </tr>
+        <tr>
+        	<td>Origin</td>
+            <td>Lahore, Pakistan.</td>
+        </tr>
+        <tr>
+        	<td>Official Website</td>
+            <td><a href="http://www.aadeez.com" target="_blank" class="under">http://www.aadeez.com</a></td>
+        </tr>
+    </tbody>
+</table>
+
+	<table id="intro-table-large" align="center">
+    <colgroup>
+        <col class="vzebra-even" />
+        <col class="vzebra-even" />
+        <col class="vzebra-even" />
+        <col class="vzebra-even" />
+    </colgroup>
+    <tbody>
+    	<tr>
+        	<td>Occupation(s)</td>
+            <td>Singer-Songwriter, Actor, Guitarist</td>
+        </tr>
+        <tr>
+        	<td>Instruments</td>
+            <td>Vocals, Guitar.</td>
+        </tr>
+        <tr>
+        	<td>Years active</td>
+            <td>2014-present.</td>
+        </tr>
+        <tr>
+        	<td>Associated acts</td>
+            <td>Coke Studio.</td>
+        </tr>
+        <tr>
+            <td>Geners</td>
+            <td>Rock, Pop, Sufi.</td>
+        </tr>
+    </tbody>
+</table>
+<div class="reset"></div>
+
+  <div id="container">
+    <div id="services">
+      <ul>
+        <li>
+          <h2><center>Basic Information:</center></h2>
+          <p>Atif Aslam (born Muhammad Atif Aslam) is a Pakistani pop/rock singer, dancer and film actor, and makes cameo appearances in Bollywood (Indian) films. His debut as an actor was in the 2011 film Pakistani movie Bol by ShoMan. He has recorded numerous chart-topping songs, and is known for his vocal belting technique. He was declared the most popular artist on Saavn (an Indian music streaming service) in 2013, followed by Arijit Singh, A. R. Rahman, Shreya Ghoshal, and Mohit Chauhan. Atif is the youngest recipient of Tamgha-e-Imtiaz, one Pakistan civilian decoration.</p>
+        </li>
+        <li>
+          <h2><center>Personal Life:</center></h2>
+          <p>Atif was born into a Muslim family in Wazirabad, Pakistan. He began his education in kindergarten at Kimberley Hall School, Larkana. In 1991 he moved to Rawalpindi where he continued his studies in St. Paul's Cambridge School, Satellite Town, Rawalpindi. Atif returned to Lahore in 1995 where he continued his studies in Divisional Public School, Lahore. He continued onwards to his FSC in Punjab College where he graduated with a Bachelor's degree. He married his long-time girlfriend, educationist Sara Bharwana, in Lahore on 30 March 2013.</p>
+        </li>
+		<li>
+          <h2><center>Public image and influences:</center></h2>
+          <p>Atif felt that his passion for singing is the biggest influence in the music career.His singing style is compared with that of Arijit Singh. Regarding the comparison made with Atif Aslam, Singh stated; "I respect [Aslam] as I do every individual musician and artist". Though Atif is being inspired by many artists,he named Nusrat Fateh Ali Khan as his favourite singer. His favourite songs are My Confession" by Richard Marx, "Where were you" by Pink Floyd,"Tere bin nahin lagta dil mere" by Ustad Nusrat Fateh Ali Khan.</p>
+        </li>
+		<div class="intro-br"></div>
+        <li>
+          <h2><center>Hollywood:</center></h2>
+          <p>Atif has three songs featured in the American independent film, Man Push Cart which has won international awards and was praised by critics. He then sung two songs in Mira Nairs film The Reluctant Fundamentalist. His two more songs 'Doorie' and 'Maula' from his second album Doorie have been picked up in 2010 for the soundtrack of the Hindi Version of a Mexican film La mujer de mi hermano directed by Ricardo de Montreuil.</p>
+        </li>
+        <li>
+          <h2><center>Atif performing in Lahore, Pakistan:</center></h2>
+          <p>Two years later Atif Aslam returned to the US. Collaborating with vocalist Shreya Ghoshal their March 2010 tour originally had 10 shows announced in US and Canada. However, the response inspired the organizers to put shows in six more cities. The next month, Atif Aslam made his debut in South America with a performance at Anthony Nesty Sports Hall, Suriname.</p>
+		</li>
+        <li>
+          <h2><center>Impact and recognition:</center></h2>
+          <p>Atif's work has received praise from several artists.Actor Suyyash Rai affirmed that he "developed an interest in singing" because of Atif Aslam. Mika Singh praised the singing of the Atif. Ranbir Kapoor likes Atif Aslam. Ranbir Kapoor said on Atif "I want to share success of Ajab Prem Ki Ghazab Kahani with him He is really popular in INDIA because of his voice. He is a wonderful singer." Singer Alamgir thanked Atif for keeping pop music alive in Pakistan.</p>
+        </li>
+		<div class="intro-br"></div>
+	    <li></li>
+        <li><center>
+          <h2><center>Carrier:</center></h2>
+          <p>Even though Atif always admired Nusrat Fateh Ali Khan and Abida Parveen, his first love was for cricket and he dreamed of representing his nation as a cricketer. He was a fast bowler and his passion for the sport saw him being selected for the national Under 19 cricket team trials. At one stage Atif was training to represent his country in the U-19 World Cup.Spurred on by his friends he began to sing in public during his days in college and recorded his first single "Aadat" with his pocket money. Within a matter of weeks "Aadat" went viral online.</p>
+		</center></li>
+	    <li></li>
+	    <div class="reset"></div>
+      </ul>
+	  <div class="reset"></div>
+    </div>
+  </div>
+
+</div>
+
+	<div class="my">
+	<p align="center">Copyright &copy; Bit Coder 2015</p>
+	</div>
+</body>
+</html>

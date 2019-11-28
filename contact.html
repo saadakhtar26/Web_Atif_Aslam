@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width">
+<link href="css/style.css" rel="stylesheet" type="text/css"/> 
+<meta charset="UTF-8" />
+<script src= "js/jquery.min.js"></script>
+<script src="js/jquery.bxslider.min.js"></script>
+<link href="css/jquery.bxslider.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/layout.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/default.css" />
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+<meta name="description" content="Atif's un-official web by Bit Coder" />
+<meta name="keywords" content="Saad Akhtar, Saddy, Bit Coder, Atif Web, Aadez" />
+<meta name="author" content="Bit Coder" />
+
+
+	<script>
+		$(document).ready(function(){
+			  $('.bxslider').bxSlider();
+		});
+	</script>
+ <!-- start equalizer -->		  
+<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/jquery-ui.min.js"></script>
+<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
+<script>
+$(function() {
+	 
+	    $( "#eq > span" ).each(function() {	   
+	      var value = parseInt( $( this ).text(), 10 );
+	      $( this ).empty().slider({
+	        value: value,
+	        range: "min",
+	        animate: true,
+	        orientation: "vertical"
+	      });
+	    });
+	  });
+</script>
+<script>
+(function($){
+	$.fn.percentPie = function(options){
+
+		var settings = $.extend({
+			width: 100,
+			trackColor: "EEEEEE",
+			barColor: "777777",
+			barWeight: 30,
+			startPercent: 0,
+			endPercent: 1,
+			fps: 60
+		}, options);
+
+		this.css({
+			width: settings.width,
+			height: settings.width
+		});
+
+		var	that = this,
+			hoverPolice = false,
+			canvasWidth = settings.width,
+			canvasHeight = canvasWidth,
+			id = $('canvas').length,
+			canvasElement = $('<canvas id="'+ id +'" width="' + canvasWidth + '" height="' + canvasHeight + '"></canvas>'),
+			canvas = canvasElement.get(0).getContext("2d"),
+			centerX = canvasWidth/2,
+			centerY = canvasHeight/2,
+			radius = settings.width/2 - settings.barWeight/2;
+			counterClockwise = false,
+			fps = 1000 / settings.fps,
+			update = .01;
+			this.angle = settings.startPercent;
+
+		this.drawArc = function(startAngle, percentFilled, color){
+			var drawingArc = true;
+			canvas.beginPath();
+			canvas.arc(centerX, centerY, radius, (Math.PI/180)*(startAngle * 360 - 90), (Math.PI/180)*(percentFilled * 360 - 90), counterClockwise);
+			canvas.strokeStyle = color;
+			canvas.lineWidth = settings.barWeight;
+			canvas.stroke();
+			drawingArc = false;
+		}
+
+		this.fillChart = function(stop){
+			var loop = setInterval(function(){
+				hoverPolice = true;
+				canvas.clearRect(0, 0, canvasWidth, canvasHeight);
+
+				that.drawArc(0, 360, settings.trackColor);
+				that.angle += update;
+				that.drawArc(settings.startPercent, that.angle, settings.barColor);
+
+				if(that.angle > stop){
+					clearInterval(loop);
+					hoverPolice = false;
+				}
+			}, fps);
+		}
+
+		this.mouseover(function(){
+			if(hoverPolice == false){
+				that.angle = settings.startPercent;
+				that.fillChart(settings.endPercent);
+			}
+		});
+
+		this.fillChart(settings.endPercent);
+		this.append(canvasElement);
+		return this;
+	}
+}(jQuery));
+
+$(document).ready(function() {
+
+	$('.google').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "71CF97",
+		barWeight: 20,
+		endPercent: .9,
+		fps: 60
+	});
+  
+  $('.moz').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "2EB0E2",
+		barWeight: 20,
+		endPercent: .75,
+		fps: 60
+	});
+  
+  $('.safari').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "#e51937",
+		barWeight: 20,
+		endPercent: .5,
+		fps: 60
+	});
+    
+});
+</script>
+ <!-- start price_bar  -->	
+<link href="css/jquery.nouislider.css" rel="stylesheet">
+<script src="js/jquery.nouislider.js"></script>
+ <link rel="stylesheet" type="text/css" href="css/form.css">
+ <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Peralta">
+
+</head>
+<body>
+<div class="wrap">
+    <br>
+	<h1>Atif Aslam</h1>
+<div class="main">
+	<!-- start menu -->
+
+	<ul class="menu">
+		<li><a href="default.php">Biography</a></li>
+		<li><a href="gallery.html">Gallery</a></li>
+		<li class="active"><a href="#">Contact Us</a></li>
+	</ul>
+	<div class="clear"></div>
+		<div class="top-nav">
+		<nav class="clearfix">
+				<ul>
+		<li><a href="default.php">Biography</a></li>
+		<li><a href="gallery.html">Gallery</a></li>
+		<li><a href="#">Contact Us</a></li>
+				</ul>
+				<a href="#" id="pull">Menu</a>
+			</nav>
+			<script>
+				$(function() {
+					var pull 		= $('#pull');
+						menu 		= $('nav ul');
+						menuHeight	= menu.height();
+		
+					$(pull).on('click', function(e) {
+						e.preventDefault();
+						menu.slideToggle();
+					});
+		
+					$(window).resize(function(){
+		        		var w = $(window).width();
+		        		if(w > 320 && menu.is(':hidden')) {
+		        			menu.removeAttr('style');
+		        		}
+		    		});
+				});
+		</script>
+		<!--nav-->
+	</div>
+	</div>
+	
+<div class="my">
+	
+<div class="wrapper col4">
+  <div id="container">
+    <div id="services">
+      <ul>
+        <li>
+          <h2><center>Who are We</center></h2>
+          <p>We are the lovers of Atif. We are the Best fans of Atif. We have a collection of Atif's pics. A gallery and 3 albums. We provide the Biography of our beloved Singer Atif! We are not from Pakistan. We are fron India and We support the voice of hearts (Atif) from India Finely. </p>
+        </li>
+        <li>
+          <h2><center>Contact Us</center></h2>
+          <p>Visitors of the web can contact Atif fans on <a href="" class="under">Facebook</a>, <a href="" class="under">Twitter</a> &amp; <a href="" class="under">Instagram</a>. Feel free to Contact us to upload new Photos, News, Information or every change or info you want about us. Please, don't hesitate to contact us.</p>
+        </li>
+        <li class="last">
+          <h2><center>Order a Web !</center></h2>
+          <p>Hi visitors of Atif's web. If you liked our Web Design, You can order anytime for a Web, Blog or Database Web. Feel free to suggest for the web changes. You can contact the Web Developer of this Web on <a href="https://www.facebook.com/saad.akhtar.3517" class="under">Facebook</a>, <a href="http://www.twitter.com/@coder_w">Twitter</a>, <a href="http://www.instagram.com/saad.akhtar.2000" class="under">Instagram</a> and on <a href="http://www.gmail.com/saad.akhtar.2000" class="under">Google</a>.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+	
+	<div class="my">
+		<div class="containers">
+			<div class="mains">
+				<form class="cbp-mc-form">
+					<div class="cbp-mc-column">
+						<label for="first_name">Your Name</label>
+	  					<input type="text" id="first_name" name="first_name" placeholder="Jonathan">
+	  				</div>
+	  				<div class="cbp-mc-column">
+						  <label for="email">Email Address</label>
+	  					<input type="text" id="email" name="email" placeholder="jon@doe.com">
+	  				</div>
+	  				<div class="cbp-mc-column">
+	  					<label for="comments">Comments</label>
+	  					<textarea id="comments" name="comments" placeholder="Comment that you like"></textarea>	
+	  				</div>
+	  				<div class="cbp-mc-submit-wrap"><input class="cbp-mc-submit" type="submit" value="Send your data" /></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+
+	<div id="footer" class="my">
+	<p align="center">Copyright &copy; Bit Coder 2015</p>
+	</div>
+	
+
+</div>
+</body>
+</html>
