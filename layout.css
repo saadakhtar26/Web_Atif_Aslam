@@ -1,0 +1,37 @@
+
+
+#container{display:block; position:relative; width:100%; margin:0 auto;}
+
+/* ----------------------------------------------Container------------------------------------- */
+
+#container{padding: 0% 0;}
+#container h2{padding-bottom: 8px; border-bottom: 1px dotted #666666;}
+
+/* Homepage Services */
+
+#container #services{display:block; width: 100%; margin: 0% 0% 2% 0%; padding: 0% 0% 0% 0%;}
+
+/* Homepage Block */
+
+#services a{background: transparent; border:none; color: #7A5C99;}
+#services ul, #services h2, #services p{margin: 0%; padding-bottom: 0%; list-style:none;}
+#services li{display: block; float:left; width: 28%; margin: 0% 1% 1% 0%; padding: 1% 2% 1% 2%; background:transparent; border: 1px dotted #666666;}
+#services li p{line-height:2em; font-size: 100%; color: #808080;}
+#services li h2{padding-bottom:8px;  color: #FFA0A0;}
+#services ul{padding-bottom: 0%; margin-left: 1.5%;}
+
+
+
+@media only screen and (max-width: 699px) {
+#services li{width: 90%; margin-left: 2%; font-size:94%;}
+#services li p{line-height:1.75em;}
+#services li h2{line-height:1.35em;}
+}
+
+
+
+@media only screen and (min-width: 700px) and (max-width: 1020px) {
+#services li{width: 28%; font-size:86%;}
+#services li p{line-height:1.70em;}
+#services li h2{line-height:1.25em;}
+}
